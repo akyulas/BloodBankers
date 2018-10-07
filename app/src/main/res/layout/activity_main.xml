@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
+
+    <TextView android:id="@+id/main_page_text"
+    android:layout_height="100dp"
+    android:layout_width="fill_parent"
+    android:text="I want to ..."
+    android:gravity="center"
+    android:textSize="50dp"
+    />
+
+    <Button
+        android:id="@+id/main_page_make_appointment_button"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page_text"
+        android:text="make an appointment"
+        android:onClick="loadAppointmentPage"
+        />
+
+    <Button
+        android:id="@+id/main_page_view_appointment_button"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page_make_appointment_button"
+        android:text="view my appointment"
+        />
+
+    <Button
+        android:id="@+id/main_page__view_donation_history"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page_view_appointment_button"
+        android:text="view my donation history"
+        />
+
+    <Button
+        android:id="@+id/main_page_faq"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page__view_donation_history"
+        android:text="know more about blood donations"
+        />
+
+    <Button
+        android:id="@+id/main_page_redeem_points"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page_faq"
+        android:text="redeem my earnings"
+        />
+
+
+</RelativeLayout>
