@@ -36,5 +36,6 @@
         android:layout_width="match_parent"
         android:layout_below="@+id/chosen_time"
         android:text="Create an appointment"
+        android:onClick="loadConfirmationPage"
         />
 </RelativeLayout>

@@ -3,11 +3,17 @@ package com.example.jodiakyulas.bloodbankers.activities
 import android.app.DatePickerDialog
 import android.app.FragmentTransaction
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
+import com.example.jodiakyulas.bloodbankers.classes.Appointment
+import com.example.jodiakyulas.bloodbankers.classes.BloodBank
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,7 +25,6 @@ class ChooseAppointmentTimingActivity : AppCompatActivity() {
 
         prepareDate()
         prepareTime()
-
 
     }
 
@@ -68,6 +73,45 @@ class ChooseAppointmentTimingActivity : AppCompatActivity() {
         buttonView.setOnClickListener {
             TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
         }
+    }
+
+    fun loadConfirmationPage(v: View) {
+
+        val appointmentPlace = intent.extras.getSerializable("BloodBank") as BloodBank
+
+        val location = appointmentPlace.location
+        val donationType = appointmentPlace.donationType
+        val address = appointmentPlace.address
+        val postalCode = appointmentPlace.postalCode
+
+
+        val dateTextView = findViewById<TextView>(R.id.chosen_date)
+        val appointmentDate = dateTextView.text.toString()
+
+        val timeTextView = findViewById<TextView>(R.id.chosen_time)
+        val appointmentStartingTime = timeTextView.text.toString()
+
+        val pattern = "HH:mm"
+
+        val date = SimpleDateFormat(pattern).parse(appointmentStartingTime)
+        val calendar = Calendar.getInstance()
+
+        calendar.time = date
+        calendar.add(Calendar.HOUR, 1)
+
+        val appointmentEndingTime = SimpleDateFormat(pattern).format(calendar.time)
+
+        val appointmentTime  = "$appointmentStartingTime - $appointmentEndingTime"
+
+        val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
+
+        val userMatricNumber = sharedPreferences.getString("matricID", "Hacker")
+
+        val appointment = Appointment(userMatricNumber, location, donationType, address, postalCode, appointmentDate, appointmentTime)
+
+        val intent = Intent(this, ConfirmAppointmentActivity::class.java)
+        intent.putExtra("Appointment", appointment)
+        startActivity(intent)
     }
 
 }

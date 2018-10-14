@@ -49,7 +49,29 @@
 
             </intent-filter>
         </activity>
+
+
         <activity android:name=".activities.ChooseAppointmentTimingActivity">
+            <intent-filter>
+                <action android:name="android.support.PARENT_ACTIVITY" />
+
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.ConfirmAppointmentActivity">
+            <intent-filter>
+                <action android:name="android.support.PARENT_ACTIVITY" />
+
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.ViewCurrentAppointmentActivity">
+            <intent-filter>
+                <action android:name="android.support.PARENT_ACTIVITY" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.ViewAppointmentHistoryActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 

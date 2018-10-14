@@ -29,6 +29,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/main_page_make_appointment_button"
         android:text="view my appointment"
+        android:onClick="loadViewCurrentAppointmentPage"
         />
 
     <Button
@@ -37,6 +38,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/main_page_view_appointment_button"
         android:text="view my donation history"
+        android:onClick="loadViewAppointmentHistoryPage"
         />
 
     <Button

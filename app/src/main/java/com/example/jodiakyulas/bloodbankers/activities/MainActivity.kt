@@ -18,4 +18,14 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, AppointmentActivity::class.java)
         startActivity(intent)
     }
+
+    fun loadViewCurrentAppointmentPage(v: View) {
+        val intent = Intent(this, ViewCurrentAppointmentActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun loadViewAppointmentHistoryPage(v: View) {
+        val intent = Intent(this, ViewAppointmentHistoryActivity::class.java)
+        startActivity(intent)
+    }
 }

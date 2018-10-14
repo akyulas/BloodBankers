@@ -59,7 +59,8 @@ class LoginActivity:AppCompatActivity() {
                         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putBoolean("hasLoggedIn", true);
-                        editor.putString("matricID", response.body().toString())
+                        editor.putString("matricID", responseMessage)
+                        editor.apply()
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         startActivity(intent)
                     } else {
