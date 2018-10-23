@@ -1,62 +1,21 @@
-package com.example.jodiakyulas.bloodbankers.activities
+package com.example.jodiakyulas.bloodbankers.control
 
-import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
-import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.adapters.BloodBankAdapter
-import com.example.jodiakyulas.bloodbankers.classes.BloodBank
-import com.example.jodiakyulas.bloodbankers.constants.Constants
-import kotlinx.android.synthetic.main.activity_make_appointment.*
-import kotlinx.coroutines.experimental.android.UI
-import kotlinx.coroutines.experimental.async
-import kotlinx.coroutines.experimental.delay
-import okhttp3.*
-import java.io.IOException
+import com.example.jodiakyulas.bloodbankers.entity.BloodBank
 import java.lang.StringBuilder
 
-class AppointmentActivity : AppCompatActivity() {
+/**
+ * This creates a controller class that controls the logic for the appointment activity.
+ */
+class AppointmentController() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_make_appointment)
-        val bloodBankRecyclerView = findViewById<RecyclerView>(R.id.bloodBankRecyclerView)
-        val relativeLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        bloodBankRecyclerView.layoutManager = relativeLayoutManager
-        bloodBankRecyclerView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
-        val bloodBankAdapter = BloodBankAdapter(ArrayList<BloodBank>(), this)
-        bloodBankRecyclerView.adapter = bloodBankAdapter
-        populateAPIBloodBankAdapter(bloodBankAdapter)
-
-    }
-
-    fun populateAPIBloodBankAdapter(bloodBankAdapter: BloodBankAdapter) {
-        val client = OkHttpClient()
-        val getBloodBankURL = "http://10.0.2.2:8090/queryAPI"
-        val request = Request.Builder().url(getBloodBankURL).build()
-        client.newCall(request).enqueue(object: Callback {
-            override fun onResponse(call: Call, response: Response) {
-                val bloodBanksJsonString = response.body()?.string()
-                val bloodBanks = createBloodBankDataset(bloodBanksJsonString)
-                runOnUiThread {
-                    bloodBankAdapter.setBloodBanks(bloodBanks)
-                }
-
-            }
-
-            override fun onFailure(call: Call, e: IOException) {
-                e.printStackTrace()
-            }
-
-        })
-
-    }
-
+    /**
+     * Create a list of blood banks.
+     * @param bloodBanksJsonString: The Json String that has been queried.
+     * @return bloodBanks: The bloodbanks that has been created.
+     */
     fun createBloodBankDataset(bloodBanksJsonString: String?): ArrayList<BloodBank> {
         var bloodBanks = ArrayList<BloodBank>()
         val parser: Parser = Parser()
@@ -70,7 +29,12 @@ class AppointmentActivity : AppCompatActivity() {
         return bloodBanks
     }
 
-    private fun createBloodBank(jsonObject: JsonObject) : BloodBank {
+    /**
+     * Create a single blood bank.
+     * @param jsonObject: The Json Object that will be used to create blood banks.
+     * @return BloodBank: The blood bank object that has been created.
+     */
+    fun createBloodBank(jsonObject: JsonObject) : BloodBank {
         val _id = jsonObject.get("_id").toString().toInt()
         val location = jsonObject.get("location").toString()
         val address = jsonObject.get("address").toString()
@@ -90,6 +54,7 @@ class AppointmentActivity : AppCompatActivity() {
                 thursdayOperatingHour = thursdayOperatingHour, fridayOperatingHour = fridayOperatingHour, saturdayOperatingHour = saturdayOperatingHour,
                 sundayOperatingHour = sundayOperatingHour, eveOfMajorPublicHolidayOperatingHour = eveOfMajorPublicHolidayOperatingHour, publicHolidayOperatingHour = publicHolidayOperatingHour)
     }
+
 
 
 }

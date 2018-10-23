@@ -1,33 +1,47 @@
-package com.example.jodiakyulas.bloodbankers.activities
+package com.example.jodiakyulas.bloodbankers.boundary
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.classes.LoginUserAuthenticator
+import com.example.jodiakyulas.bloodbankers.control.LoginController
+import com.example.jodiakyulas.bloodbankers.control.RegisterController
+import com.example.jodiakyulas.bloodbankers.entity.LoginUserAuthenticator
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
+/**
+ * This create a boundary class that lets the user login.
+ */
 class LoginActivity:AppCompatActivity() {
 
+    /**
+     * Function that gets run on creation.
+     * @param savedInstanceState The bundle saves the current instance of the activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
     }
 
+    /**
+     * Function to load the registration page.
+     */
     fun loadRegistrationPage(v: View) {
         val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 
+    /**
+     * Function to authenticate the login credentials.
+     */
     fun authenticationForLogin(v: View) {
         val username = findViewById<EditText>(R.id.editLoginUsername).text.toString()
         val password = findViewById<EditText>(R.id.editPassword).text.toString()
@@ -55,7 +69,7 @@ class LoginActivity:AppCompatActivity() {
                         builder.setMessage("Please try to log in again later.")
                         val dialog: AlertDialog = builder.create()
                         dialog.show()
-                    } else if (RegisterActivity().matchMatricCardNo(responseMessage)){
+                    } else if (LoginController().matchMatricCardNo(responseMessage)){
                         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putBoolean("hasLoggedIn", true);
@@ -75,6 +89,13 @@ class LoginActivity:AppCompatActivity() {
             }
 
         })
+    }
+
+    /**
+     * Function to load the forget password page.
+     */
+    fun loadForgetPasswordPage() {
+
     }
 
 

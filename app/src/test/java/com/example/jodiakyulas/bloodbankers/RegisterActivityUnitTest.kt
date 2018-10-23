@@ -1,7 +1,6 @@
 package com.example.jodiakyulas.bloodbankers
 
-import com.example.jodiakyulas.bloodbankers.activities.RegisterActivity
-import com.example.jodiakyulas.bloodbankers.constants.Constants
+import com.example.jodiakyulas.bloodbankers.boundary.RegisterActivity
 import org.junit.Assert.*
 import org.junit.Test
 

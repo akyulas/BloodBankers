@@ -1,7 +1,5 @@
-package com.example.jodiakyulas.bloodbankers.activities
+package com.example.jodiakyulas.bloodbankers.boundary
 
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
@@ -9,45 +7,36 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.classes.Appointment
+import com.example.jodiakyulas.bloodbankers.control.ConfirmAppointmentController
+import com.example.jodiakyulas.bloodbankers.entity.Appointment
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_confirm_timing.*
 import okhttp3.*
-import org.w3c.dom.Text
 import java.io.IOException
 
+/**
+ * This create a boundary class that lets the user confirm appointments.
+ */
 class ConfirmAppointmentActivity : AppCompatActivity() {
 
+    /**
+     * Instantiate the appointment confirmation controller.
+     */
+    val confirmAppointmentController = ConfirmAppointmentController(this)
+
+    /**
+     * Function that gets run on creation.
+     * @param savedInstanceState The bundle saves the current instance of the activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirm_timing)
-        populateFields()
+        confirmAppointmentController.populateFields()
     }
 
-    fun populateFields() {
 
-        val appointment = intent.extras.getSerializable("Appointment") as Appointment
-
-        val bloodBankLocationView = findViewById<TextView>(R.id.bloodBankLocation)
-        bloodBankLocationView.append(appointment.location)
-
-        val bloodBankDonationTypeView = findViewById<TextView>(R.id.bloodBankDonationType)
-        bloodBankDonationTypeView.append(appointment.donationType)
-
-        val bloodBankAddressView = findViewById<TextView>(R.id.bloodBankAddress)
-        bloodBankAddressView.append(appointment.address)
-
-        val bloodBankPostalCodeView = findViewById<TextView>(R.id.bloodBankPostalCode)
-        bloodBankPostalCodeView.append(appointment.postalCode)
-
-        val bloodBankAppointmentDateView = findViewById<TextView>(R.id.bloodBankAppointmentDate)
-        bloodBankAppointmentDateView.append(appointment.appointmentDate)
-
-        val bloodBankAppointmentTimeView = findViewById<TextView>(R.id.bloodBankAppointmentTime)
-        bloodBankAppointmentTimeView.append(appointment.appointmentTime)
-
-    }
-
+    /**
+     * Function that gets run when user confirm the appointment.
+     */
     fun confirmAppointment(v: View) {
 
         val appointment = intent.extras.getSerializable("Appointment") as Appointment

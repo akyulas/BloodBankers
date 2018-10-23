@@ -1,80 +1,48 @@
-package com.example.jodiakyulas.bloodbankers.activities
+package com.example.jodiakyulas.bloodbankers.boundary
 
 import android.app.DatePickerDialog
-import android.app.FragmentTransaction
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.classes.Appointment
-import com.example.jodiakyulas.bloodbankers.classes.BloodBank
+import com.example.jodiakyulas.bloodbankers.control.ChooseAppointmentTimingController
+import com.example.jodiakyulas.bloodbankers.entity.Appointment
+import com.example.jodiakyulas.bloodbankers.entity.BloodBank
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * This create a boundary class that lets the user select timing details.
+ */
 class ChooseAppointmentTimingActivity : AppCompatActivity() {
 
+    /**
+    * Instantiate the blood bank timing controller.
+    */
+    val chooseAppointmentTimingController = ChooseAppointmentTimingController(this)
+
+    /**
+     * Function that gets run on creation.
+     * @param savedInstanceState The bundle saves the current instance of the activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_date_and_time)
 
-        prepareDate()
-        prepareTime()
+        chooseAppointmentTimingController.prepareDate()
+        chooseAppointmentTimingController.prepareTime()
 
     }
 
-    fun prepareDate() {
-
-        val textView  = findViewById<TextView>(R.id.chosen_date)
-        textView.text = SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-
-        val buttonView = findViewById<Button>(R.id.date_picker_button)
-
-        var cal = Calendar.getInstance()
-
-        val dateSetListener = DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-            cal.set(Calendar.YEAR, year)
-            cal.set(Calendar.MONTH, monthOfYear)
-            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
-
-            textView.text = SimpleDateFormat("dd.MM.yyyy").format(cal.time)
-
-        }
-
-        buttonView.setOnClickListener() {
-                DatePickerDialog(this, dateSetListener,
-                        cal.get(Calendar.YEAR),
-                        cal.get(Calendar.MONTH),
-                        cal.get(Calendar.DAY_OF_MONTH)).show()
-            }
-        }
-
-    fun prepareTime() {
-
-        val textView  = findViewById<TextView>(R.id.chosen_time)
-        textView.text = SimpleDateFormat("HH:mm").format(System.currentTimeMillis())
-
-        val buttonView = findViewById<Button>(R.id.time_picker_button)
-
-        val cal = Calendar.getInstance()
-
-        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
-            cal.set(Calendar.HOUR_OF_DAY, hour)
-            cal.set(Calendar.MINUTE, minute)
-
-            textView.text = SimpleDateFormat("HH:mm").format(cal.time)
-        }
-
-        buttonView.setOnClickListener {
-            TimePickerDialog(this, timeSetListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), true).show()
-        }
-    }
-
+    /**
+     * Function to load the appointment page.
+     * @param v The view that the user selected.
+     */
     fun loadConfirmationPage(v: View) {
 
         val appointmentPlace = intent.extras.getSerializable("BloodBank") as BloodBank

@@ -1,4 +1,4 @@
-package com.example.jodiakyulas.bloodbankers.activities
+package com.example.jodiakyulas.bloodbankers.boundary
 
 import android.content.Context
 import android.os.Bundle
@@ -11,16 +11,28 @@ import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.adapters.AppointmentAdapter
-import com.example.jodiakyulas.bloodbankers.classes.Appointment
+import com.example.jodiakyulas.bloodbankers.control.AppointmentAdapter
+import com.example.jodiakyulas.bloodbankers.control.ViewAppointmentHistoryController
+import com.example.jodiakyulas.bloodbankers.entity.Appointment
 import okhttp3.*
 import java.io.IOException
 import java.lang.StringBuilder
-import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * This create a boundary class that lets the user view the appointment history.
+ */
 class ViewAppointmentHistoryActivity : AppCompatActivity() {
 
+    /**
+     * Instantiate the view appointment history controller.
+     */
+    val viewAppointmentHistoryController = ViewAppointmentHistoryController()
+
+    /**
+     * Function that gets run on creation.
+     * @param savedInstanceState The bundle saves the current instance of the activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_appointment_history)
@@ -34,6 +46,10 @@ class ViewAppointmentHistoryActivity : AppCompatActivity() {
         populateActivity(appointmentAdapter)
     }
 
+    /**
+     * Function to populate the appointment adapter.
+     * @param bloodBankAdapter The appointment adapter that will be populated.
+     */
     fun populateActivity(appointmentAdapter: AppointmentAdapter) {
 
         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
@@ -60,7 +76,7 @@ class ViewAppointmentHistoryActivity : AppCompatActivity() {
 
                     } else {
 
-                        val appointments = getCurrentAppointment(appointmentString)
+                        val appointments = viewAppointmentHistoryController.getAppointmentHistory(appointmentString)
 
                         if (appointments == null) {
 
@@ -87,33 +103,6 @@ class ViewAppointmentHistoryActivity : AppCompatActivity() {
         })
     }
 
-    fun getCurrentAppointment(appointmentString: String?) : ArrayList<Appointment>?{
-        if (appointmentString == null) {
-            return null
-        }
-        val parser: Parser = Parser()
-        var json: JsonArray<JsonObject> = parser.parse(StringBuilder(appointmentString)) as JsonArray<JsonObject>
 
-        val appointments = ArrayList<Appointment>()
-
-        for (i in 0..(json.size - 1)) {
-            val jsonObj = json.get(i)
-
-            val userMatricID = jsonObj.string("userMatricID").toString()
-            val location = jsonObj.string("location").toString()
-            val donationType = jsonObj.string("donationType").toString()
-            val address = jsonObj.string("address").toString()
-            val postalCode = jsonObj.string("postalCode").toString()
-
-            val appointmentDate = jsonObj.string("appointmentDate").toString()
-
-            val appointmentTime = jsonObj.string("appointmentTime").toString()
-
-            appointments.add(Appointment(userMatricID, location, donationType, address, postalCode, appointmentDate, appointmentTime))
-        }
-
-        return appointments
-
-    }
 
 }

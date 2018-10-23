@@ -1,4 +1,4 @@
-package com.example.jodiakyulas.bloodbankers.activities
+package com.example.jodiakyulas.bloodbankers.boundary
 
 import android.content.Context
 import android.content.Intent
@@ -16,20 +16,34 @@ import com.beust.klaxon.JsonArray
 import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.adapters.AppointmentAdapter
-import com.example.jodiakyulas.bloodbankers.classes.Appointment
+import com.example.jodiakyulas.bloodbankers.control.AppointmentAdapter
+import com.example.jodiakyulas.bloodbankers.control.ViewCurrentAppointmentController
+import com.example.jodiakyulas.bloodbankers.entity.Appointment
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_current_appointment.*
 import okhttp3.*
 import java.io.IOException
 import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 import java.util.*
 
+/**
+ * This create a boundary class that lets the user view the current appointment.
+ */
 class ViewCurrentAppointmentActivity : AppCompatActivity() {
 
+    /**
+     * The current appointment.
+     */
     var currentAppointment: Appointment? =null
+    /**
+     * Instantiate the view current appointment controller.
+     */
+    val viewCurrentAppointmentController = ViewCurrentAppointmentController()
 
+    /**
+     * Function that gets run on creation.
+     * @param savedInstanceState The bundle saves the current instance of the activity.
+     */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_current_appointment)
@@ -43,6 +57,10 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
         populateActivity(appointmentAdapter)
     }
 
+    /**
+     * Function to populate the view.
+     * @param appointmentAdapter The adapter that will be used to modify the view.
+     */
     fun populateActivity(appointmentAdapter: AppointmentAdapter) {
 
         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
@@ -69,7 +87,7 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
 
                     } else {
 
-                        val appointment = getCurrentAppointment(appointmentString)
+                        val appointment = viewCurrentAppointmentController.getCurrentAppointment(appointmentString)
 
                         if (appointment == null) {
 
@@ -104,39 +122,9 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
         })
     }
 
-    fun getCurrentAppointment(appointmentString: String?) : Appointment?{
-        if (appointmentString == null) {
-            return null
-        }
-        val parser: Parser = Parser()
-        var json: JsonArray<JsonObject> = parser.parse(StringBuilder(appointmentString)) as JsonArray<JsonObject>
-        val jsonObj = json.get(0)
-
-        val appointmentDate = jsonObj.string("appointmentDate").toString()
-
-        val appointmentTime = jsonObj.string("appointmentTime").toString()
-
-        val timings = appointmentTime.split(" - ".toRegex())
-        val endTime = timings.get(1)
-
-        val appointmentEndDate = "${appointmentDate} ${endTime}"
-
-        val pattern = "dd.MM.yyyy HH:mm"
-        val endingDate = SimpleDateFormat(pattern).parse(appointmentEndDate)
-
-        if (endingDate.after(Calendar.getInstance().time)) {
-            val userMatricID = jsonObj.string("userMatricID").toString()
-            val location = jsonObj.string("location").toString()
-            val donationType = jsonObj.string("donationType").toString()
-            val address = jsonObj.string("address").toString()
-            val postalCode = jsonObj.string("postalCode").toString()
-            return Appointment(userMatricID, location, donationType, address, postalCode, appointmentDate, appointmentTime)
-        } else {
-            return null
-        }
-
-    }
-
+    /**
+     * Function to open the address in google map.
+     */
     fun openInGoogleMap(v: View) {
         val postalCodeView = findViewById<TextView>(R.id.bloodBankPostalCode)
         val mapURL = "http://maps.google.com.sg/maps?q=${postalCodeView.text}"
@@ -144,7 +132,10 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun showWarning(v: View) {
+    /**
+     * Function to show show warning before deleting.
+     */
+    fun showWarningBeforeDeleting(v: View) {
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Warning")
@@ -164,6 +155,9 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Function to delete appointment.
+     */
     fun deleteAppointment() {
         val json = Gson().toJson(currentAppointment)
 
