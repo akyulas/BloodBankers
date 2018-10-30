@@ -1,4 +1,4 @@
-package com.example.jodiakyulas.bloodbankers.boundary
+package com.example.jodiakyulas.bloodbankers.control
 
 import android.content.Context
 import android.content.Intent
@@ -9,15 +9,13 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.control.LoginController
-import com.example.jodiakyulas.bloodbankers.control.RegisterController
 import com.example.jodiakyulas.bloodbankers.entity.LoginUserAuthenticator
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
 /**
- * This create a boundary class that lets the user login.
+ * This create a controller class for log in purposes.
  */
 class LoginActivity:AppCompatActivity() {
 
@@ -69,7 +67,7 @@ class LoginActivity:AppCompatActivity() {
                         builder.setMessage("Please try to log in again later.")
                         val dialog: AlertDialog = builder.create()
                         dialog.show()
-                    } else if (LoginController().matchMatricCardNo(responseMessage)){
+                    } else if (matchMatricCardNo(responseMessage)){
                         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
                         editor.putBoolean("hasLoggedIn", true);
@@ -89,6 +87,18 @@ class LoginActivity:AppCompatActivity() {
             }
 
         })
+    }
+
+    /**
+     * This is used to match matriculation card number with a specific regex.
+     * @param cardNo The matriculation card no.
+     * @return Boolean that shows the result of the matching.
+     */
+    fun matchMatricCardNo(cardNo: String): Boolean {
+        val regex = """^(U|G)[0-9]{7}[A-Z]$""".toRegex()
+        if (regex.matches(cardNo))
+            return true
+        return false
     }
 
     /**

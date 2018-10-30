@@ -1,12 +1,12 @@
-package com.example.jodiakyulas.bloodbankers.boundary
+package com.example.jodiakyulas.bloodbankers.control
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
 /**
- * This create a boundary class that lets the user recover password.
+ * This create a boundary class that lets the user browse the FAQ.
  */
-class ForgetPasswordActivity: AppCompatActivity() {
+class FAQActivity: AppCompatActivity() {
 
     /**
      * Function that gets run on creation.
@@ -14,14 +14,5 @@ class ForgetPasswordActivity: AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        resetPassword()
     }
-
-    /**
-     * Function to reset password.
-     */
-    fun resetPassword() {
-
-    }
-
 }

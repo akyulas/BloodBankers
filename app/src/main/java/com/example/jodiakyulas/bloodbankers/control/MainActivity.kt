@@ -1,4 +1,4 @@
-package com.example.jodiakyulas.bloodbankers.boundary
+package com.example.jodiakyulas.bloodbankers.control
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -56,6 +56,8 @@ class MainActivity : AppCompatActivity() {
      * Function to load the mobile blood drive page.
      */
     fun loadMobileBloodDrivePage(v: View) {
+        val intent = Intent(this, MobileBloodDriveActivity::class.java)
+        startActivity(intent)
 
     }
 }

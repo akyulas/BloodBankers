@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".boundary.StartingActivity">
+        <activity android:name=".control.StartingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,59 +19,65 @@
 
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.MainActivity">
+        <activity android:name=".control.MainActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.LoginActivity">
+        <activity android:name=".control.LoginActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.RegisterActivity">
+        <activity android:name=".control.RegisterActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.AppointmentActivity">
+        <activity android:name=".control.AppointmentActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.BloodBankDetailsActivity">
-            <intent-filter>
-                <action android:name="android.support.PARENT_ACTIVITY" />
-
-            </intent-filter>
-        </activity>
-
-
-        <activity android:name=".boundary.ChooseAppointmentTimingActivity">
+        <activity android:name=".control.BloodBankDetailsActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
 
-        <activity android:name=".boundary.ConfirmAppointmentActivity">
+
+        <activity android:name=".control.ChooseAppointmentTimingActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
 
-        <activity android:name=".boundary.ViewCurrentAppointmentActivity">
+        <activity android:name=".control.ConfirmAppointmentActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 
             </intent-filter>
         </activity>
-        <activity android:name=".boundary.ViewAppointmentHistoryActivity">
+
+        <activity android:name=".control.ViewCurrentAppointmentActivity">
+            <intent-filter>
+                <action android:name="android.support.PARENT_ACTIVITY" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name=".control.ViewAppointmentHistoryActivity">
+            <intent-filter>
+                <action android:name="android.support.PARENT_ACTIVITY" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name=".control.MobileBloodDriveActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />
 

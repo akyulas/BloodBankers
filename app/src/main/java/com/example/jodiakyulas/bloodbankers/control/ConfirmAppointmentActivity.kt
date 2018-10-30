@@ -1,4 +1,4 @@
-package com.example.jodiakyulas.bloodbankers.boundary
+package com.example.jodiakyulas.bloodbankers.control
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,21 +7,15 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
-import com.example.jodiakyulas.bloodbankers.control.ConfirmAppointmentController
 import com.example.jodiakyulas.bloodbankers.entity.Appointment
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
 
 /**
- * This create a boundary class that lets the user confirm appointments.
+ * This create a controller class that lets the user confirm appointments.
  */
 class ConfirmAppointmentActivity : AppCompatActivity() {
-
-    /**
-     * Instantiate the appointment confirmation controller.
-     */
-    val confirmAppointmentController = ConfirmAppointmentController(this)
 
     /**
      * Function that gets run on creation.
@@ -30,7 +24,7 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirm_timing)
-        confirmAppointmentController.populateFields()
+        populateFields()
     }
 
 
@@ -76,6 +70,33 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
             }
 
         })
+
+    }
+
+    /**
+     * Function to populate the view.
+     */
+    fun populateFields() {
+
+        val appointment = intent.extras.getSerializable("Appointment") as Appointment
+
+        val bloodBankLocationView = findViewById<TextView>(R.id.bloodBankLocation)
+        bloodBankLocationView.append(appointment.location)
+
+        val bloodBankDonationTypeView = findViewById<TextView>(R.id.bloodBankDonationType)
+        bloodBankDonationTypeView.append(appointment.donationType)
+
+        val bloodBankAddressView = findViewById<TextView>(R.id.bloodBankAddress)
+        bloodBankAddressView.append(appointment.address)
+
+        val bloodBankPostalCodeView = findViewById<TextView>(R.id.bloodBankPostalCode)
+        bloodBankPostalCodeView.append(appointment.postalCode)
+
+        val bloodBankAppointmentDateView = findViewById<TextView>(R.id.bloodBankAppointmentDate)
+        bloodBankAppointmentDateView.append(appointment.appointmentDate)
+
+        val bloodBankAppointmentTimeView = findViewById<TextView>(R.id.bloodBankAppointmentTime)
+        bloodBankAppointmentTimeView.append(appointment.appointmentTime)
 
     }
 

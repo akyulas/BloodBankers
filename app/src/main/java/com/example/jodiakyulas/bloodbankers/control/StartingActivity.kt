@@ -1,4 +1,4 @@
-package com.example.jodiakyulas.bloodbankers.boundary
+package com.example.jodiakyulas.bloodbankers.control
 
 import android.content.Context
 import android.content.Intent

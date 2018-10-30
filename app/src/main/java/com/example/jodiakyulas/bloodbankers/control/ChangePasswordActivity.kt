@@ -1,13 +1,12 @@
-package com.example.jodiakyulas.bloodbankers.boundary
+package com.example.jodiakyulas.bloodbankers.control
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.example.jodiakyulas.bloodbankers.R
 
 /**
- * This create a boundary class that lets the user browse the FAQ.
+ * This create a controller class that lets the user change password.
  */
-class FAQActivity: AppCompatActivity() {
+class ChangePasswordActivity: AppCompatActivity() {
 
     /**
      * Function that gets run on creation.
@@ -15,5 +14,14 @@ class FAQActivity: AppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        changePassword()
     }
+
+    /**
+     * Function that will take care of password change.
+     */
+    fun changePassword() {
+
+    }
+
 }

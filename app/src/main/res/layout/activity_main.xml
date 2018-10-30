@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".boundary.MainActivity">
+    tools:context=".control.MainActivity">
 
     <TextView android:id="@+id/main_page_text"
     android:layout_height="100dp"
@@ -24,10 +24,19 @@
         />
 
     <Button
-        android:id="@+id/main_page_view_appointment_button"
+        android:id="@+id/view_mobile_blood_banks"
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:layout_below="@id/main_page_make_appointment_button"
+        android:text="View mobile blood banks"
+        android:onClick="loadMobileBloodDrivePage"
+        />
+
+    <Button
+        android:id="@+id/main_page_view_appointment_button"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/view_mobile_blood_banks"
         android:text="view my appointment"
         android:onClick="loadViewCurrentAppointmentPage"
         />
@@ -56,6 +65,8 @@
         android:layout_below="@id/main_page_faq"
         android:text="redeem my earnings"
         />
+
+
 
 
 </RelativeLayout>

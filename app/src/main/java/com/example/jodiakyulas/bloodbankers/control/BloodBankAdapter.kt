@@ -7,8 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.jodiakyulas.bloodbankers.R
-import android.widget.TextView
-import com.example.jodiakyulas.bloodbankers.boundary.BloodBankDetailsActivity
 import com.example.jodiakyulas.bloodbankers.entity.BloodBank
 import com.example.jodiakyulas.bloodbankers.entity.BloodBankViewHolder
 
