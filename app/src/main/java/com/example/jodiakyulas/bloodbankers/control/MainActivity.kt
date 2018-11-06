@@ -52,6 +52,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun loadRedemptionPage(v: View) {
+        val intent = Intent(this, PointsRedemptionActivity::class.java)
+        startActivity(intent)
+    }
+
     /**
      * Function to load the mobile blood drive page.
      */

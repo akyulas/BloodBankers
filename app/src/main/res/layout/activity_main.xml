@@ -64,6 +64,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/main_page_faq"
         android:text="redeem my earnings"
+        android:onClick="loadRedemptionPage"
         />
 
 

@@ -78,7 +78,7 @@ class ViewAppointmentHistoryActivity : AppCompatActivity() {
 
                         } else {
                             val currentAppointmentTextView = findViewById<TextView>(R.id.current_appointment)
-                            currentAppointmentTextView.text = "This is your appointment history."
+                            currentAppointmentTextView.text = "This is your donation history."
                             appointmentAdapter.setAppointments(appointments)
 
                         }

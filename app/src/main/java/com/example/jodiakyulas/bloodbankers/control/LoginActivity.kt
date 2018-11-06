@@ -104,8 +104,9 @@ class LoginActivity:AppCompatActivity() {
     /**
      * Function to load the forget password page.
      */
-    fun loadForgetPasswordPage() {
-
+    fun loadForgetPasswordPage(v: View) {
+        val intent = Intent(this, ForgetPasswordActivity::class.java)
+        startActivity(intent)
     }
 
 

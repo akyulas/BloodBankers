@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/pointsRedemptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your current points are: "
+        android:textSize = "25dp"
+        />
+
+    <TextView
+        android:id="@+id/pointsTotalPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/pointsRedemptionText"
+        android:textSize = "25dp"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/pointsRedemptionMerchants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:layout_below="@+id/pointsRedemptionText"
+        />
+
+</RelativeLayout>

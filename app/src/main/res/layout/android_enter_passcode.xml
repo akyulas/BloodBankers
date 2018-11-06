@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id = "@+id/forget_enter_passcode_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please enter the pass code send to your meail address:"
+        android:textSize = "25dp"/>
+
+    <EditText
+        android:id = "@+id/forget_enter_passcode_text_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forget_enter_passcode_header"/>
+
+    <Button
+        android:id = "@+id/forget_enter_passcode_text_box_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forget_enter_passcode_text_box"
+        android:text = "Verify Pass Code"
+        android:onClick="verifyPassCode"
+        />
+
+    <Button
+        android:id = "@+id/forget_resend_email_text_box_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forget_enter_passcode_text_box_button"
+        android:text = "Resend the email"
+        android:onClick="sendEmail"/>
+
+</RelativeLayout>

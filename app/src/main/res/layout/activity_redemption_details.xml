@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+        <TextView android:id = "@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize = "30dp"
+            android:text = "This is your preferred redemption. Please click confirm if this is correct."
+            />
+
+        <TextView
+            android:id="@+id/merchantName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize = "25dp"
+            android:layout_below="@id/header"
+            />
+
+        <TextView
+            android:id="@+id/merchantText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize = "25dp"
+            android:layout_below="@+id/merchantName"
+            />
+
+        <TextView
+            android:id="@+id/merchantPoints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize = "25dp"
+            android:layout_below="@+id/merchantText"
+            />
+
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/merchantPoints"
+            android:text = "confirm"
+            android:onClick="confirmVouncherPayment"
+
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
