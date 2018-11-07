@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
 import com.example.jodiakyulas.bloodbankers.entity.Appointment
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
@@ -37,7 +38,7 @@ class ConfirmAppointmentActivity : AppCompatActivity() {
         val json = Gson().toJson(appointment)
 
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
         val url = "http://10.0.2.2:8090/appointment"
         val request = Request.Builder().url(url).post(body).build()
 

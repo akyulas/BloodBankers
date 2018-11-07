@@ -17,6 +17,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import com.example.jodiakyulas.bloodbankers.R
 import com.example.jodiakyulas.bloodbankers.entity.Appointment
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
@@ -60,7 +61,7 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
         val userMatricNumber = sharedPreferences.getString("matricID", "Hacker")
 
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
 
         val appointmentURL = "http://10.0.2.2:8090/appointment?m=$userMatricNumber"
 
@@ -156,7 +157,7 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
         val json = Gson().toJson(currentAppointment)
 
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
         val url = "http://10.0.2.2:8090/appointment"
         val request = Request.Builder().url(url).delete(body).build()
         client.newCall(request).enqueue(object: Callback {

@@ -67,6 +67,24 @@
         android:onClick="loadRedemptionPage"
         />
 
+    <Button
+        android:id="@+id/main_page_change_password"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page_redeem_points"
+        android:text="change password"
+        android:onClick="loadChangePasswordPage"
+        />
+
+    <Button
+        android:id="@+id/main_page_logout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/main_page_change_password"
+        android:text="Log out"
+        android:onClick="logout"
+        />
+
 
 
 

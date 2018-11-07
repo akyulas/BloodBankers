@@ -10,6 +10,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
 import com.example.jodiakyulas.bloodbankers.entity.LoginUserAuthenticator
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import com.google.gson.Gson
 import okhttp3.*
 import java.io.IOException
@@ -47,7 +48,7 @@ class LoginActivity:AppCompatActivity() {
 
         val json = Gson().toJson(loginUser)
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
         val url = "http://10.0.2.2:8090/login"
         val request = Request.Builder().url(url).post(body).build()
         client.newCall(request).enqueue(object: Callback {
@@ -70,7 +71,7 @@ class LoginActivity:AppCompatActivity() {
                     } else if (matchMatricCardNo(responseMessage)){
                         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
                         val editor = sharedPreferences.edit()
-                        editor.putBoolean("hasLoggedIn", true);
+                        editor.putBoolean("hasLoggedIn", true)
                         editor.putString("matricID", responseMessage)
                         editor.apply()
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
