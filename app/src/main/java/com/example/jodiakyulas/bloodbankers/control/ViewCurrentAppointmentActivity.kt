@@ -199,7 +199,7 @@ class ViewCurrentAppointmentActivity : AppCompatActivity() {
      * @return The current appointment.
      */
     fun getCurrentAppointment(appointmentString: String?) : Appointment?{
-        if (appointmentString == null) {
+        if (appointmentString == null || appointmentString == "[]") {
             return null
         }
         val parser: Parser = Parser()

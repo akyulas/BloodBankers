@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ScrollView
@@ -11,70 +10,71 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:minHeight="48dp"
-                android:paddingEnd="16dp"
-                android:paddingStart="16dp">
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text="Donor's Criteria"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    tools:text="Donor's Criteria" />
+                    />
 
-                <EditText
+                <TextView
                     android:id="@+id/editText"
                     android:layout_width="611dp"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textMultiLine"
+                    android:paddingTop="30dp"
                     android:text="
-        •	Age between 16-40 years old
-        •	Weight at least 46kg
-        •	Have a haemoglobin level of at least 12.5 g/dl (Male donor is 13.0 g/dl)
-        •	Generally, be in good health
-        •	Do not have had any symptoms of infection such as sore throat, cough, runny nose, diarrhea
-        for at least 1 week.
-        •	Not have had a fever in the last 3 weeks
+        •	Age between 16-40 years old \n
+        •	Weight at least 46kg \n
+        •	Have a haemoglobin level of at least 12.5 g/dl \n\t\t\t (Male donor is 13.0 g/dl) \n
+        •	Generally, be in good health \n
+        •	Do not have had any symptoms of infection such as \n\t\t\t sore throat, cough, runny nose, diarrhea \n\t\t\t for at least 1 week. \n
+        •	Not have had a fever in the last 3 weeks \n
         " />
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView"
+                    android:text="General FAQ"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    tools:text="General FAQ" />
+                    />
 
-                <EditText
+                <TextView
                     android:id="@+id/editText3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textMultiLine"
+                    android:paddingTop="30dp"
                     android:text="
-•	Is Donating Blood Safe?
-Blood donation is a safe procedure. It takes only about 45 minutes for the entire whole blood donation
-•	Types of blood donation
-Whole Blood Donation: 450-mL, or less than 1 pint, of whole blood is collected from each donor in a plastic bag that contains an anticoagulant preservative.
-Apheresis Component Donation: Apheresis is a specialized form of blood donation in which only one specific blood component (either platelets, plasma or red cells) are extracted from the donor.
-•	How Often Can I Donate Blood?
-For whole blood donations, there is a waiting period of 12 weeks before you can make your next donation. (up to 4 times a year.)
+        •	Is Donating Blood Safe? \n
+          Blood donation is a safe procedure. It takes only about \n\t\t\t  45 minutes for the entire whole blood donation \n
+        •	Types of blood donation \n
+          Whole Blood Donation: 450-mL, or less than 1 pint, of\n\t\t\t  whole blood is collected from each donor in a plastic \n\t\t\t  bag that contains an anticoagulant preservative. \n
+          Apheresis Component Donation: Apheresis is a \n\t\t\t  specialized form of blood donation in which only one \n\t\t\t  specific blood component (either platelets, plasma or \n\t\t\t  red cells) are extracted from the donor. \n
+        •	How Often Can I Donate Blood? \n
+          For whole blood donations, there is a waiting period of \n\t\t\t  12 weeks before you can make your next donation. (up \n\t\t\t  to 4 times a year.)
 " />
             </android.support.v7.widget.CardView>
 
@@ -83,13 +83,12 @@ For whole blood donations, there is a waiting period of 12 weeks before you can 
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="For more specialize queries please visit:  https://www.hsa.gov.sg/pub/faq/faq/faqcategory/blood-donation.aspx"
                 android:autoLink="all"
-                android:textSize="18sp"
-                <!--tools:text="For more specialize queries please visit:" />-->
-            />
+                android:text="For more specialize queries please visit:  https://www.hsa.gov.sg/pub/faq/faq/faqcategory/blood-donation.aspx"
+                android:textSize="18sp" />
+            <!--tools:text="For more specialize queries please visit:" />-->
 
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

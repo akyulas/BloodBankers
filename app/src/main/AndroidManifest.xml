@@ -107,6 +107,12 @@
 
             </intent-filter>
         </activity>
+        <activity android:name=".control.FAQActivity">
+            <intent-filter>
+                <action android:name="android.support.PARENT_ACTIVITY" />
+
+            </intent-filter>
+        </activity>
         <activity android:name=".control.RedemptionDetailActivity">
             <intent-filter>
                 <action android:name="android.support.PARENT_ACTIVITY" />

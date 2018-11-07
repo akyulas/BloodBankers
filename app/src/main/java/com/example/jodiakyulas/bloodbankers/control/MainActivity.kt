@@ -52,7 +52,8 @@ class MainActivity : AppCompatActivity() {
      * Function to load the faq page.
      */
     fun loadFAQPage(v: View) {
-
+        val intent = Intent(this, FAQActivity::class.java)
+        startActivity(intent)
     }
 
     fun loadRedemptionPage(v: View) {

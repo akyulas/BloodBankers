@@ -9,7 +9,8 @@
         android:layout_height="wrap_content"
         android:text="Your current points are: "
         android:textColor="@android:color/black"
-        android:textSize="25dp" />
+        android:textSize = "25dp"
+        />
 
     <TextView
         android:id="@+id/pointsTotalPoints"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/pointsRedemptionText"
         android:textSize = "25dp"
+        android:textColor="@android:color/black"
         />
 
     <android.support.v7.widget.RecyclerView
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:layout_below="@+id/pointsRedemptionText"
+        android:textColor="@android:color/black"
         />
 
 </RelativeLayout>

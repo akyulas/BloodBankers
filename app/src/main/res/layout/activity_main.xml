@@ -57,6 +57,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/main_page__view_donation_history"
         android:text="know more about blood donations"
+        android:onClick="loadFAQPage"
         />
 
     <Button
