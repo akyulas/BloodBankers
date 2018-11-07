@@ -3,18 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="@drawable/mrblood"
+    android:alpha="0.7">
 
     <TextView
         android:id="@+id/landing_page_text"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Welcome....."
-        android:textColor="@android:color/black"
+        android:text="Welcome..."
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="50dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="209dp" />
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="440dp" />
 
 </android.support.constraint.ConstraintLayout>
