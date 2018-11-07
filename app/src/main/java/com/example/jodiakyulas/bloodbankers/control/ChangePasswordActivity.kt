@@ -11,6 +11,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import okhttp3.*
 import java.io.IOException
 
@@ -43,10 +44,14 @@ class ChangePasswordActivity: AppCompatActivity() {
             dialog.show()
         } else {
             val password = findViewById<EditText>(R.id.editPassword).text.toString()
-            val client = OkHttpClient()
+            val client = OkHttpSingleton.getClient()
 
             val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
-            val email = sharedPreferences.getString("email", "wrong-email")
+            var email = sharedPreferences.getString("email", "wrong-email")
+
+            if (email == "wrong-email") {
+                email = getEmail();
+            }
 
             val passcodeURL = "http://10.0.2.2:8090/password/$email/$password"
 
@@ -61,15 +66,23 @@ class ChangePasswordActivity: AppCompatActivity() {
 
                         if (returnString.equals("Succeeded")) {
 
-                            val intent = Intent(this@ChangePasswordActivity, LoginActivity::class.java)
-                            startActivity(intent)
+                            val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
+                            val loggedIn = sharedPreferences.getBoolean("hasLoggedIn", false)
+
+                            if (loggedIn) {
+                                val intent = Intent(this@ChangePasswordActivity, MainActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                val intent = Intent(this@ChangePasswordActivity, LoginActivity::class.java)
+                                startActivity(intent)
+                            }
 
 
                         } else {
 
                             val builder = AlertDialog.Builder(this@ChangePasswordActivity)
                             builder.setTitle("Something went wrong.")
-                            builder.setMessage(returnString)
+                            builder.setMessage("Please try again later.")
                             val dialog: AlertDialog = builder.create()
                             dialog.show()
 
@@ -172,6 +185,52 @@ class ChangePasswordActivity: AppCompatActivity() {
         if (password != "" && password.equals(password2))
             return true
         return false
+    }
+
+    fun matchEmail(email: String): Boolean {
+        val regex = """^[a-zA-Z0-9_\.+]+@(e)(\.ntu)(\.edu)(\.sg)$""".toRegex()
+        if (regex.matches(email))
+            return true
+        return false
+    }
+
+    private fun getEmail(): String {
+        val client = OkHttpSingleton.getClient()
+        val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
+        val matricID = sharedPreferences.getString("matricID", "Hacker")
+        val emailURL = "http://10.0.2.2:8090/getEmail/$matricID"
+        var returnValue = "hello"
+
+        val request = Request.Builder().url(emailURL).build()
+        client.newCall(request).enqueue(object: Callback {
+            override fun onResponse(call: Call, response: Response) {
+
+                val returnString = response.body()?.string()!!
+
+                runOnUiThread {
+
+                    if (matchEmail(returnString)) {
+                        returnValue = returnString
+                    } else {
+
+                        val builder = AlertDialog.Builder(this@ChangePasswordActivity)
+                        builder.setTitle("Something went wrong.")
+                        builder.setMessage("Please try again later.")
+                        val dialog: AlertDialog = builder.create()
+                        dialog.show()
+
+                    }
+
+                }
+
+            }
+
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
+
+        })
+        return returnValue
     }
 
 }

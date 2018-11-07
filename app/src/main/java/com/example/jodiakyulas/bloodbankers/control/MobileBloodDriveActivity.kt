@@ -13,6 +13,7 @@ import com.beust.klaxon.Parser
 import com.example.jodiakyulas.bloodbankers.R
 import com.example.jodiakyulas.bloodbankers.entity.BloodBank
 import com.example.jodiakyulas.bloodbankers.entity.MobileBloodBank
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import okhttp3.*
 import java.io.IOException
 import java.lang.StringBuilder
@@ -80,7 +81,7 @@ class MobileBloodDriveActivity: AppCompatActivity() {
 
 
     fun populateActivity(mobileBloodBankAdapter: MobileBloodBankAdapter) {
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
 
         val mobileBloodBank = "http://10.0.2.2:8090/mobileBloodBank"
         val request = Request.Builder().url(mobileBloodBank).build()

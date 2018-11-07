@@ -9,6 +9,7 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import com.example.jodiakyulas.bloodbankers.R
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import com.example.jodiakyulas.bloodbankers.entity.User
 import com.google.gson.Gson
 import okhttp3.*
@@ -74,7 +75,7 @@ class RegisterActivity : AppCompatActivity(){
 
         val json = Gson().toJson(user)
         val body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json)
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
         val url = "http://10.0.2.2:8090/register"
         val request = Request.Builder().url(url).post(body).build()
         client.newCall(request).enqueue(object: Callback {

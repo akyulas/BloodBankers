@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import com.example.jodiakyulas.bloodbankers.entity.ParticipatingMerchants
 import okhttp3.*
 import org.w3c.dom.Text
@@ -48,9 +49,7 @@ class PointsRedemptionActivity:AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
         val matricID = sharedPreferences.getString("matricID", "hacker")
 
-        val client = OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS).build()
+        val client = OkHttpSingleton.getClient()
 
         val pointsView = findViewById<TextView>(R.id.pointsTotalPoints)
         val pointsURL = "http://10.0.2.2:8090/getPoints?m=$matricID"

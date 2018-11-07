@@ -10,6 +10,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import com.example.jodiakyulas.bloodbankers.R
 import com.example.jodiakyulas.bloodbankers.entity.BloodBank
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import okhttp3.*
 import java.io.IOException
 import java.lang.StringBuilder
@@ -85,7 +86,7 @@ class AppointmentActivity : AppCompatActivity() {
      * @param bloodBankAdapter The blood bank adapter that will be populated.
      */
     fun populateAPIBloodBankAdapter(bloodBankAdapter: BloodBankAdapter) {
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
         val getBloodBankURL = "http://10.0.2.2:8090/queryAPI"
         val request = Request.Builder().url(getBloodBankURL).build()
         client.newCall(request).enqueue(object: Callback {

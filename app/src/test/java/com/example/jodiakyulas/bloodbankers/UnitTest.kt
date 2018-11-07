@@ -1,21 +1,20 @@
 package com.example.jodiakyulas.bloodbankers
 
 import org.junit.Test
-import com.example.jodiakyulas.bloodbankers.constants.Constants.backendURL;
 import okhttp3.*
 import org.junit.Assert.*
 
 
 class UnitTest {
-    @Test
-    fun canAccessBackendAPI() {
-        val client = OkHttpClient()
-        val getBloodBankURL = backendURL + "queryAPI"
-        val request = Request.Builder().url(getBloodBankURL).build()
-        val call = client.newCall(request);
-        val response = call.execute()
-        assertEquals(200, response.code())
-    }
+//    @Test
+//    fun canAccessBackendAPI() {
+//        val client = OkHttpClient()
+//        val getBloodBankURL = backendURL + "queryAPI"
+//        val request = Request.Builder().url(getBloodBankURL).build()
+//        val call = client.newCall(request);
+//        val response = call.execute()
+//        assertEquals(200, response.code())
+//    }
 
 //    @Test
 //    fun canCreateBloodBankDataset() {

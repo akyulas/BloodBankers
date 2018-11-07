@@ -12,6 +12,7 @@ import com.beust.klaxon.JsonObject
 import com.beust.klaxon.Parser
 import com.example.jodiakyulas.bloodbankers.R
 import com.example.jodiakyulas.bloodbankers.entity.Appointment
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import okhttp3.*
 import java.io.IOException
 import java.lang.StringBuilder
@@ -48,7 +49,7 @@ class ViewAppointmentHistoryActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
         val userMatricNumber = sharedPreferences.getString("matricID", "Hacker")
 
-        val client = OkHttpClient()
+        val client = OkHttpSingleton.getClient()
 
         val appointmentURL = "http://10.0.2.2:8090/appointment?m=$userMatricNumber"
 

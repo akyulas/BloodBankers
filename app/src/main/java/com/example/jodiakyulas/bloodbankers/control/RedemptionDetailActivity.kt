@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import com.example.jodiakyulas.bloodbankers.R
+import com.example.jodiakyulas.bloodbankers.entity.OkHttpSingleton
 import com.example.jodiakyulas.bloodbankers.entity.ParticipatingMerchants
 import okhttp3.*
 import java.io.IOException
@@ -38,9 +39,7 @@ class RedemptionDetailActivity:AppCompatActivity() {
     }
 
     fun confirmVouncherPayment(v: View) {
-        val client = OkHttpClient.Builder().connectTimeout(10, TimeUnit.SECONDS)
-                .writeTimeout(10, TimeUnit.SECONDS)
-                .readTimeout(30, TimeUnit.SECONDS).build()
+        val client = OkHttpSingleton.getClient()
 
         val sharedPreferences = getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE)
         val matricID = sharedPreferences.getString("matricID", "hacker")
