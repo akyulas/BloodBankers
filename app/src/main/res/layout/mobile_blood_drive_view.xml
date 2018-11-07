@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="wrap_content">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/bloodBankLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blood Bank Location"
-        android:textSize = "25dp"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <LinearLayout
         android:id="@+id/bloodDonationTimings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize = "20dp"
-        android:layout_below="@+id/bloodBankLocation"
         android:orientation="vertical" />
 
     <TextView
         android:id="@+id/bloodBankAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="186dp"
+        android:layout_height="28dp"
         android:text="Blood Bank Address"
-        android:textSize = "20dp"
-        android:layout_below="@+id/bloodDonationTimings"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="34dp" />
 
     <Button
         android:id="@+id/bloodBankGoogleMap"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_width="386dp"
+        android:layout_height="58dp"
         android:text="Find location on google map"
-        android:layout_below="@id/bloodBankAddress"
-        />
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="98dp" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

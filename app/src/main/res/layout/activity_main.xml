@@ -6,13 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".control.MainActivity">
 
-    <TextView android:id="@+id/main_page_text"
-    android:layout_height="100dp"
-    android:layout_width="fill_parent"
-    android:text="I want to ..."
-    android:gravity="center"
-    android:textSize="50dp"
-    />
+    <TextView
+        android:id="@+id/main_page_text"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:gravity="center"
+        android:text="I want to ..."
+        android:textColor="@android:color/black"
+        android:textSize="50dp" />
 
     <Button
         android:id="@+id/main_page_make_appointment_button"

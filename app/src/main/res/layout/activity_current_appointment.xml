@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="wrap_content">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/appointmentRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical" />
+
+    <Button
+        android:id="@+id/viewLocationButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openInGoogleMap"
+        android:text="View Location"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/deleteAppointmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="showWarningBeforeDeleting"
+        android:text="CANCEL APPOINTMENT"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/current_appointment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Loading..............."
-        android:textSize = "25dp"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="25dp"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="246dp" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/appointmentRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical"
-        android:layout_below="@+id/current_appointment"
-        />
-
-    <Button
-        android:id="@+id/viewLocationButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="View Location"
-        android:layout_below="@+id/appointmentRecyclerView"
-        android:visibility="gone"
-        android:onClick="openInGoogleMap"
-    />
-
-    <Button
-        android:id="@+id/deleteAppointmentButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CANCEL APPOINTMENT"
-        android:layout_below="@+id/viewLocationButton"
-        android:visibility="gone"
-        android:onClick="showWarningBeforeDeleting"
-        />
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

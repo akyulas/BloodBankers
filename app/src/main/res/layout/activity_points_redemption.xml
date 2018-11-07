@@ -8,8 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your current points are: "
-        android:textSize = "25dp"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/pointsTotalPoints"

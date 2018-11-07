@@ -7,34 +7,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blood Bank Location"
-        android:textSize = "25dp"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/bloodDonationType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Donation Type"
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodBankLocation"
-        />
+        android:text="Donation Type"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/bloodBankAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blood Bank Location"
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodDonationType"
-        />
+        android:text="Blood Bank Location"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/bloodBankPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Postal Code"
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodBankAddress"
-        />
+        android:text="Postal Code"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
 </RelativeLayout>

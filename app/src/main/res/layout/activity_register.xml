@@ -21,7 +21,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matriculation Number: " />
+            android:text="Matriculation Number: "
+            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
 
         <EditText
             android:id="@+id/editUsername"
@@ -32,7 +33,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NTU E-mail: " />
+            android:text="NTU E-mail: "
+            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
 
         <EditText
             android:id="@+id/editUsername2"
@@ -42,7 +44,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password: " />
+            android:text="Password: "
+            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
 
         <EditText
             android:id="@+id/editPassword"
@@ -53,7 +56,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Reenter Your Password: " />
+            android:text="Reenter Your Password: "
+            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
 
         <EditText
             android:id="@+id/editPassword2"
@@ -65,8 +69,10 @@
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:onClick="registerUser"
             android:text="Register"
-            android:onClick="registerUser"/>
+            android:textStyle="bold" />
 
 
         <android.support.v7.widget.AppCompatTextView

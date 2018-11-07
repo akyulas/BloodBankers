@@ -4,11 +4,12 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id = "@+id/forget_enter_passcode_header"
+        android:id="@+id/forget_enter_passcode_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Please enter the pass code send to your meail address:"
-        android:textSize = "25dp"/>
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
 
     <EditText
         android:id = "@+id/forget_enter_passcode_text_box"
@@ -17,20 +18,28 @@
         android:layout_below="@id/forget_enter_passcode_header"/>
 
     <Button
-        android:id = "@+id/forget_enter_passcode_text_box_button"
+        android:id="@+id/forget_enter_passcode_text_box_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/forget_enter_passcode_text_box"
-        android:text = "Verify Pass Code"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/forget_resend_email_text_box_button"
+        android:layout_marginStart="21dp"
+        android:fontFamily="sans-serif"
         android:onClick="verifyPassCode"
-        />
+        android:text="Verify Pass Code"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button"
+        android:textStyle="bold" />
 
     <Button
-        android:id = "@+id/forget_resend_email_text_box_button"
+        android:id="@+id/forget_resend_email_text_box_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/forget_enter_passcode_text_box_button"
-        android:text = "Resend the email"
-        android:onClick="sendEmail"/>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="46dp"
+        android:layout_marginTop="117dp"
+        android:onClick="sendEmail"
+        android:text="Resend the email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
 </RelativeLayout>

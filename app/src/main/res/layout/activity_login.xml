@@ -21,7 +21,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Matriculation Number Or Email: " />
+            android:text="Matriculation Number Or Email: "
+            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
 
         <EditText
             android:id="@+id/editLoginUsername"
@@ -31,7 +32,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password: " />
+            android:text="Password: "
+            android:textColor="@color/common_google_signin_btn_text_light_pressed" />
 
         <EditText
             android:id="@+id/editPassword"
@@ -44,7 +46,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="authenticationForLogin"
-            android:text="Login" />
+            android:text="Login"
+            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <android.support.v7.widget.AppCompatTextView
             android:id="@+id/textRegister"

@@ -6,124 +6,125 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Blood Bank Location: "
-        android:textSize = "25dp"
-        />
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
 
     <TextView
         android:id="@+id/bloodDonationType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Donation Type: "
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodBankLocation"
-        />
+        android:text="Donation Type: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/bloodBankAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Blood Bank Address: "
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodDonationType"
-        />
+        android:text="Blood Bank Address: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/bloodBankPostalCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Postal Code: "
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodBankAddress"
-        />
+        android:text="Postal Code: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/mondayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Monday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/bloodBankPostalCode"
-        />
+        android:text="Monday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/tuesdayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tuesday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/mondayOperatingHour"
-        />
+        android:text="Tuesday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/wednesdayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wednesday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/tuesdayOperatingHour"
-        />
+        android:text="Wednesday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/thursdayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thursday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/wednesdayOperatingHour"
-        />
+        android:text="Thursday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/fridayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Friday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/thursdayOperatingHour"
-        />
+        android:text="Friday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/saturdayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Saturday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/fridayOperatingHour"
-        />
+        android:text="Saturday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/sundayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sunday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/saturdayOperatingHour"
-        />
+        android:text="Sunday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/eveOfMajorPublicHolidayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eve Of Major Public Holiday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/sundayOperatingHour"
-        />
+        android:text="Eve Of Major Public Holiday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/publicHolidayOperatingHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Public Holiday Operating Hour: "
-        android:textSize = "20dp"
         android:layout_below="@+id/eveOfMajorPublicHolidayOperatingHour"
-        />
+        android:text="Public Holiday Operating Hour: "
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/publicHolidayOperatingHour"
-        android:text = "Make an appointment"
-        android:onClick="loadAppointmentTimePage"
+        android:fontFamily="sans-serif"
 
-        />
+        android:onClick="loadAppointmentTimePage"
+        android:text="Make an appointment"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
 
 </RelativeLayout>

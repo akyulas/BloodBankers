@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BloodBankers</string>
+    <string name="hyperlink">Click <a href="https://www.hsa.gov.sg/pub/faq/faq/faqcategory/blood-donation.aspx">here</a></string>
 </resources>
