@@ -16,6 +16,7 @@ class RegisterActivityUnitTest {
     @Test
     fun testEmail() {
         assertEquals(true, RegisterActivity().matchEmail("THATOEOO001@e.ntu.edu.sg"))
+        assertEquals(false, RegisterActivity().matchEmail("THATOEOO001@ntu.edu.sg"))
         assertEquals(false,RegisterActivity().matchEmail("bolshack_fire@hotmail.com"))
     }
 
